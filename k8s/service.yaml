@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webshop-frontend
+  namespace: webshop
+spec:
+  selector:
+    app: webshop-frontend
+  ports:
+    - port: 80
+      targetPort: 80
+  type: ClusterIP
