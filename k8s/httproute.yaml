@@ -8,8 +8,6 @@ spec:
     - name: mygateway
       namespace: default
       sectionName: myhttp
-  hostnames:
-    - webshop.atcomputing.nl
   rules:
     - matches:
         - path:
