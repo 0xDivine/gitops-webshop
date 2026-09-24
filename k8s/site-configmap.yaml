@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webshop-site
+  namespace: webshop
+data:
+  index.html: |
+    # Frontend source is copied here manually for now
+  style.css: |
+    # Frontend source is copied here manually for now
+  app.js: |
+    # Frontend source is copied here manually for now
