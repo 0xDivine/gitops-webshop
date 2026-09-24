@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>NovaShop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#">NovaShop</a>
+    <button class="cart" id="cartButton">Cart <span id="cartCount">0</span></button>
+  </header>
+  <main>
+    <section class="hero">
+      <p class="eyebrow">Kubernetes-powered storefront</p>
+      <h1>Simple tech. Clean design.</h1>
+      <p>Discover a small collection of everyday tech essentials.</p>
+    </section>
+    <section class="products" id="products"></section>
+  </main>
+  <div class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer-panel">
+      <div class="drawer-head">
+        <h2>Your cart</h2>
+        <button id="closeCart" aria-label="Close cart">×</button>
+      </div>
+      <div id="cartItems"></div>
+      <div class="total"><span>Total</span><strong id="cartTotal">€0.00</strong></div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
