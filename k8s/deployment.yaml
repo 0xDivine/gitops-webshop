@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: webshop-frontend
+  namespace: webshop
+  labels:
+    app: webshop-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: webshop-frontend
+  template:
+    metadata:
+      labels:
+        app: webshop-frontend
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.29-alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: site
+              mountPath: /usr/share/nginx/html
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d/default.conf
+              subPath: default.conf
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 80
+            initialDelaySeconds: 5
+            periodSeconds: 10
+      volumes:
+        - name: site
+          configMap:
+            name: webshop-site
+        - name: nginx-config
+          configMap:
+            name: webshop-nginx-config
