@@ -1,0 +1,21 @@
+apiVersion: gateway.networking.k8s.io/v1
+kind: GatewayClass
+metadata:
+  name: nginx
+spec:
+  controllerName: gateway.nginx.org/nginx-gateway-controller
+---
+apiVersion: gateway.networking.k8s.io/v1
+kind: Gateway
+metadata:
+  name: mygateway
+  namespace: default
+spec:
+  gatewayClassName: nginx
+  listeners:
+    - name: myhttp
+      protocol: HTTP
+      port: 80
+      allowedRoutes:
+        namespaces:
+          from: All
